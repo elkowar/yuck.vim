@@ -20,7 +20,7 @@ syn keyword YuckSpecialSymbol defwidget defwindow defpoll deflisten geometry str
 
 
 syn match YuckSymbol '[a-zA-Z_!\?<>/\.\*-+\-][^\r\n\t\f \(\)\[\]{}]*'
-syn match YuckKeyword '\<:[^\r\n\t\f ]\+'
+syn match YuckKeyword '\<:[^\r\n\t ]\+'
 
 syntax match YuckNumber "\v\c<[-+]?\d*\.?\d*%([eE][-+]?\d+)?>"
 syntax match YuckNumber "\v\c<[-+]?0x[0-9A-F]*\.?[0-9A-F]*>"

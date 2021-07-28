@@ -232,10 +232,10 @@ if exists("*searchpairpos")
 		endif
 
 
-"	 if g:yuck_fuzzy_indent
+	 "if g:yuck_fuzzy_indent
 "			\ && !s:match_one(g:yuck_fuzzy_indent_blacklist, ww)
 "			\ && s:match_one(g:yuck_fuzzy_indent_patterns, ww)
-"		return [paren[0], paren[1] + &shiftwidth - 1]
+		return [paren[0], paren[1] + &shiftwidth - 1]
 "	endif
 
 		call search('\v\_s', 'cW')
