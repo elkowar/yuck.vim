@@ -8,9 +8,13 @@ set cpo&vim
 syn match YuckComment ";.*$"
 
 syntax match YuckStringEscape '\v\\%([abfnrtv'"\\]|x[[0-9a-fA-F]]\{2}|25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9])' contained
-syntax region YuckString matchgroup=YuckStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=YuckStringEscape,@Spell
-syntax region YuckString matchgroup=YuckStringDelimiter start=/'/ skip=/\\\\\|\\'/ end=/'/ contains=YuckStringEscape,@Spell
-syntax region YuckString matchgroup=YuckStringDelimiter start=/`/ skip=/\\\\\|\\`/ end=/`/ contains=YuckStringEscape,@Spell
+
+syntax region YuckString matchgroup=YuckStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=YuckStringEscape,@Spell,YuckStringInterp
+syntax region YuckString matchgroup=YuckStringDelimiter start=/'/ skip=/\\\\\|\\'/ end=/'/ contains=YuckStringEscape,@Spell,YuckStringInterp
+syntax region YuckString matchgroup=YuckStringDelimiter start=/`/ skip=/\\\\\|\\`/ end=/`/ contains=YuckStringEscape,@Spell,YuckStringInterp
+
+
+syntax region YuckStringInterp matchgroup=YuckInterpDelimiter start=/\${/ end=/}/ contains=@YuckTop,@Spell contained
 
 
 syn keyword YuckBoolean true
@@ -47,6 +51,7 @@ hi def link YuckString String
 hi def link YuckBuffer String
 hi def link YuckStringDelimiter String
 hi def link YuckBoolean Boolean
+hi def link YuckInterpDelimiter Special
 
 hi def link YuckParen Delimiter
 
