@@ -20,7 +20,7 @@ syntax region YuckStringInterp matchgroup=YuckInterpDelimiter start=/\${/ end=/}
 syn keyword YuckBoolean true
 syn keyword YuckBoolean false
 
-syn keyword YuckSpecialSymbol defwidget defwindow defpoll deflisten geometry struts include
+syn keyword YuckSpecialSymbol defwidget defwindow defpoll defvar deflisten geometry struts include
 
 
 syn match YuckSymbol '[a-zA-Z_!\?<>/\.\*-+\-][^\r\n\t\f \(\)\[\]{}]*'
