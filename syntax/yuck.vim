@@ -2,7 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-let s:cpo_sav = &cpo
+let s:save_cpo = &cpo
 set cpo&vim
 
 syn match YuckComment ";.*$"
@@ -58,5 +58,5 @@ hi def link YuckParen Delimiter
 
 let b:current_syntax = "yuck"
 
-let &cpo = s:cpo_sav
-unlet! s:cpo_sav
+let &cpo = s:save_cpo
+unlet! s:save_cpo

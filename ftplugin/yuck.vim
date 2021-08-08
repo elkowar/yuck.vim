@@ -14,3 +14,4 @@ setlocal commentstring=;\ %s
 
 
 let &cpo = s:cpo_save
+unlet! s:cpo_save
