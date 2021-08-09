@@ -96,16 +96,14 @@ endfunction
 
 function! s:yuck_check_for_keyword_worker(paren_lnum)
   " Check whether the first word of this line is a highlighted
-  " as a keyword. If so, we check for the indent,  the first word of the previous line is
-  " as a keyword. In case or the word after . If so,
-  " In this case we take the indent of the previous
+  " as a keyword. If so, we check for the indent of the first keyword
+  " in the enclosing paren line.
   if a:paren_lnum == v:lnum
     return -1
   endif
 
   call cursor(0, 1)
   call cursor(0, searchpos('\<\k', 'Wn', v:lnum)[1])
-
   if s:syn_id_name() !~? "keyword"
     return -1
   endif
@@ -223,15 +221,13 @@ function! s:yuck_indent_pos()
   " Now we have to reimplement lispindent. This is surprisingly easy, as
   " soon as one has access to syntax items.
   "
-  " - Check whether we are in a special position after a word in
-  "   g:yuck_special_indent_words. These are special cases.
   " - Get the next keyword after the (.
   " - If its first character is also a (, we have another sexp and align
   "   one column to the right of the unmatched (.
   " - In case it is in lispwords, we indent the next line to the column of
   "   the ( + sw.
-  " - If not, we check whether it is last word in the line. In that case
-  "   we again use ( + sw for indent.
+  " - If not, we check whether it is a keyword or last word in the line.
+  "   In those cases we again use ( + sw for indent.
   " - In any other case we use the column of the end of the word + 2.
   call cursor(paren)
 
