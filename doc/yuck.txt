@@ -1,0 +1,47 @@
+*yuck.vim* syntax highlighting and indentation for yuck, the eww config language
+
+                                          _        ~
+                         _   _ _   _  ___| | __    ~
+                        | | | | | | |/ __| |/ /    ~
+                        | |_| | |_| | (__|   <     ~
+                         \__, |\__,_|\___|_|\_\    ~
+                         |___/                     ~
+              Syntax highlighting and indentation for yuck.
+
+
+====================================================================
+Usage and Configuration                                    *YuckUsage*
+
+This plugin will automatically provide syntax highlighting and
+automatic indentation for yuck files (files ending in .yuck).
+
+Some things about how yuck.vim handles indentation may be configured:
+
+--------------------------------------------------------------------
+*align_multiline_strings*
+Specify if multiline strings should be aligned. 
+Default: 0
+>
+  let g:yuck_align_multiline_strings = 1
+<
+
+--------------------------------------------------------------------
+*align_subforms*
+Specify if the contents of any toplevel form should be aligned.
+Default: 0
+>
+  let g:yuck_align_subforms = 1
+<
+
+--------------------------------------------------------------------
+*align_keywords*
+Specify if keyword-value pairs should be aligned.
+This allows for better visual separation of the attributes 
+and the contents of a widget.
+Default: 1
+>
+  let g:yuck_align_keywords = 0
+< 
+vim:ft=help
+
+
