@@ -15,7 +15,6 @@ let b:did_indent = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-setlocal noautoindent nosmartindent
 setlocal indentkeys=!^F,o,O
 setlocal indentexpr=GetYuckIndent()
 

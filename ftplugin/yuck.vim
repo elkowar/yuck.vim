@@ -16,6 +16,7 @@ setlocal formatoptions-=t
 if !exists("g:yuck_recommended_style") || g:yuck_recommended_style != 0
   let b:undo_ftplugin ..= " sw< sts< et<"
   setlocal shiftwidth=2 softtabstop=2 expandtab
+  setlocal autoindent nosmartindent
 endif
 
 let &cpo = s:cpo_save
