@@ -41,7 +41,7 @@ let g:yuck_align_multiline_strings = get(g:, 'yuck_align_multiline_strings', 0)
 
 let g:yuck_align_subforms = get(g:, 'yuck_align_subforms', 0)
 
-let g:yuck_align_keypairs = get(g:, 'yuck_align_keypairs', 1)
+let g:yuck_align_keywords = get(g:, 'yuck_align_keywords', 1)
 
 " Only define the function once.
 if exists('*GetYuckIndent')
@@ -213,9 +213,11 @@ function! s:yuck_indent_pos()
   endif
 
   " We take the keypairs indent if there was one.
-  let i = s:check_for_keyword(paren[0])
-  if i > -1
-    return [paren[0], i]
+  if g:yuck_align_keywords
+    let i = s:check_for_keyword(paren[0])
+    if i > -1
+      return [paren[0], i]
+    endif
   endif
 
   " Now we have to reimplement lispindent. This is surprisingly easy, as
@@ -224,9 +226,9 @@ function! s:yuck_indent_pos()
   " - Get the next keyword after the (.
   " - If its first character is also a (, we have another sexp and align
   "   one column to the right of the unmatched (.
-  " - In case it is in lispwords, we indent the next line to the column of
+  " - In case it is a keyword, we indent the next line to the column of
   "   the ( + sw.
-  " - If not, we check whether it is a keyword or last word in the line.
+  " - If not, we check if it is the last word in the line.
   "   In those cases we again use ( + sw for indent.
   " - In any other case we use the column of the end of the word + 2.
   call cursor(paren)
@@ -253,12 +255,12 @@ function! s:yuck_indent_pos()
     return paren
   endif
 
-  let ww = w
-  if &lispwords =~# '\V\<' . ww . '\>'
+  if s:syn_id_name() =~? 'symbol'
     return [paren[0], paren[1] + &shiftwidth - 1]
   endif
 
-  if s:syn_id_name() =~? 'symbol' || g:yuck_fuzzy_indent
+  let ww = w
+  if g:yuck_fuzzy_indent
        \ && !s:match_one(g:yuck_fuzzy_indent_blacklist, ww)
        \ && s:match_one(g:yuck_fuzzy_indent_patterns, ww)
     return [paren[0], paren[1] + &shiftwidth - 1]
