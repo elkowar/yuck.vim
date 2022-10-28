@@ -42,6 +42,14 @@ Default: 1
 >
   let g:yuck_align_keywords = 0
 < 
+
+--------------------------------------------------------------------
+*lisp_indentation*
+Specify whether to prefer the Lisp indentation algorithm. See 'lisp'.
+Default: 0
+>
+  let g:yuck_lisp_indentation = 1
+<
 vim:ft=help
 
 
