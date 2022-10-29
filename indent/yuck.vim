@@ -42,6 +42,14 @@ let g:yuck_align_subforms = get(g:, 'yuck_align_subforms', 0)
 
 let g:yuck_align_keywords = get(g:, 'yuck_align_keywords', 1)
 
+let g:yuck_lisp_indentation = get(g:, 'yuck_lisp_indentation', 0)
+
+if g:yuck_lisp_indentation
+  setlocal indentexpr=
+  setlocal lisp
+  finish
+endif
+
 " Only define the function once.
 if exists('*GetYuckIndent')
     finish
