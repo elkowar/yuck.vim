@@ -8,7 +8,6 @@ set cpo&vim
 
 let b:undo_ftplugin = "setl com< cms< fo<"
 
-setlocal iskeyword=!,$,%,#,*,+,-,.,/,:,<,=,>,?,_,a-z,A-Z,48-57,128-247,124,126,38,94
 setlocal suffixesadd=.yuck
 setlocal comments=n:; commentstring=;\ %s
 setlocal formatoptions-=t
