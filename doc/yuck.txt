@@ -50,6 +50,13 @@ Default: 0
 >
   let g:yuck_lisp_indentation = 1
 <
+
+--------------------------------------------------------------------
+*recommended_style*
+Specify whether to use yuck's recommended indentation style.
+When editing yuck files, indentation settings will be overriden.
+Default: 1
+>
+  let g:yuck_recommended_style = 0
+<
 vim:ft=help
-
-
